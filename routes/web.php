@@ -20,3 +20,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::middleware(['auth'])->group(function() {
+	// Routes only for admins
+	Route::middleware(['admin'])->group(function() {
+        // Questions controller routes
+        Route::resource("/questions", "QuestionsController");
+        Route::put("/questions/{question}/soft_delete", "QuestionsController@soft_delete")->name("questions.soft_delete");
+	});
+
+	// Route for plain users
+});
