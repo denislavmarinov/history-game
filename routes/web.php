@@ -27,6 +27,7 @@ Route::middleware(['auth'])->group(function() {
         // Questions controller routes
         Route::resource("/questions", "QuestionsController");
         Route::put("/questions/{question}/soft_delete", "QuestionsController@soft_delete")->name("questions.soft_delete");
+        Route::put("/questions/{question}/return_in_game", "QuestionsController@return_in_game")->name("questions.return_in_game");
 	});
 
 	// Route for plain users

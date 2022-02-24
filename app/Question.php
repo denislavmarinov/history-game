@@ -10,7 +10,7 @@ class Question extends Model
     public static function select_all_questions()
     {
         return DB::table("questions")
-                ->select('questions.id as id', 'question', 'points', 'question_difficulties.difficulty as difficulty')
+                ->select('questions.id as id', 'question', 'points', 'question_difficulties.difficulty as difficulty', 'deleted_at')
                 ->join("question_difficulties", "questions.difficulty", "=", "question_difficulties.id")
                 ->get();
     }

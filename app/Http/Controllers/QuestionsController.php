@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Question;
+use App\Http\Requests\QuestionRequest;
 use Illuminate\Http\Request;
 use App\QuestionDifficulty;
 use Illuminate\Support\Facades\Auth;
@@ -36,10 +37,10 @@ class QuestionsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\QuestionRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(QuestionRequest $request)
     {
 
         $answers = [];
@@ -106,11 +107,11 @@ class QuestionsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\QuestionRequest  $request
      * @param  \App\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Question $question)
+    public function update(QuestionRequest $request, Question $question)
     {
         $answers = [];
 
@@ -164,6 +165,26 @@ class QuestionsController extends Controller
 
         Question::update_question($id, $data);
 
-        return redirect()->route("questions.show", $id);
+        return redirect()->back();
+    }
+
+    /**
+     * Returns a question into the game
+     *
+     * @param  \App\Question  $question
+     * @return \Illuminate\Http\Response
+     */
+    public function return_in_game(Question $question)
+    {
+        $id = $question->id;
+
+        $data = [
+            'deleted_at' => NULL,
+            'deleted_by' => NULL,
+        ];
+
+        Question::update_question($id, $data);
+
+        return redirect()->back();
     }
 }
