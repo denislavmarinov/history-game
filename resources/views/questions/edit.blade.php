@@ -101,7 +101,7 @@
                         </select>
                         <br>
 
-                        <input type="submit" value="Create question" class="btn btn-outline-success">
+                        <input type="submit" value="Edit question" class="btn btn-outline-warning">
 
                     </form>
                 </div>

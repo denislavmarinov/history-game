@@ -10,7 +10,10 @@
                 <div class="card-body">
 
                     <div class="row">
-                            <div class="col-5 offset-7">
+                            <div class="col-1 offset-6">
+                                <label for="search" class="form-control-label">Search:</label>
+                            </div>
+                            <div class="col-5">
                                 <form method="post">
                                     <input type="text" id="search" class="form-control">
                                 </form>

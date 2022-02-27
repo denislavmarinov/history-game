@@ -37,7 +37,21 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        @guest
+                        @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('game.index') }}">Play game</a>
+                            </li>
+                            @if(auth()->user()->role)
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Questions</a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="{{ route('questions.index') }}">All questions</a>
+                                        <a class="dropdown-item" href="{{ route('questions.create') }}">Add new question</a>
+                                    </div>
+                                </li>
+                            @endif
+                        @endguest
                     </ul>
 
                     <!-- Right Side Of Navbar -->
