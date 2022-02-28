@@ -13,11 +13,144 @@
         overflow: scroll;
         height: 350px;
     }
+    .parent {
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+    #image {
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+    #image1, #image2, #image3, #image4, #image5, #image6, #image7, #image8, #image9, #image10, #image11, #image12, #image13, #image14, #image15, #image16, #image17, #image18, #image19, #image20, #image21, #image22, #image23, #image24 {
+        position: absolute;
+    }
+    #image1 {
+        top: 376px;
+        left: 240px;
+    }
+    #image2 {
+        top: 354px;
+        left: 209px;
+    }
+    #image3 {
+        top: 303px;
+        left: 204px;
+    }
+    #image4 {
+        top: 288px;
+        left: 177px;
+    }
+    #image5 {
+        top: 236px;
+        left: 172px;
+    }
+    #image6 {
+        top: 212px;
+        left: 201px;
+    }
+    #image7 {
+        top: 188px;
+        left: 272px;
+    }
+    #image8 {
+        top: 229px;
+        left: 281px;
+    }
+    #image9 {
+        top: 259px;
+        left: 233px;
+    }
+    #image10 {
+        top: 283px;
+        left: 234px;
+    }
+    #image11 {
+        top: 275px;
+        left: 290px;
+    }
+    #image12 {
+        top: 271px;
+        left: 363px;
+    }
+    #image13 {
+        top: 265px;
+        left: 410px;
+    }
+    #image14 {
+        top: 266px;
+        left: 489px;
+    }
+    #image15 {
+        top: 269px;
+        left: 533px;
+    }
+    #image16 {
+        top: 243px;
+        left: 569px;
+    }
+    #image17 {
+        top: 196px;
+        left: 591px;
+    }
+    #image18 {
+        top: 158px;
+        left: 575px;
+    }
+    #image19 {
+        top: 122px;
+        left: 540px;
+    }
+    #image20 {
+        top: 95px;
+        left: 482px;
+    }
+    #image21 {
+        top: 108px;
+        left: 446px;
+    }
+    #image22 {
+        top: 137px;
+        left: 411px;
+    }
+    #image23 {
+        top: 180px;
+        left: 404px;
+    }
+    #image24 {
+        top: 198px;
+        left: 406px;
+    }
 </style>
 <div class="container">
     <div class="row">
-        <div class="col-8">
-            <img src="{{ asset('images/map.jpg') }}" alt="Game map" usemap="#map">
+        <div class="col-8 parent">
+            <img src="{{ asset('images/map.jpg') }}" alt="Game map" usemap="#map" id="image">
+            <img src="{{ asset('images/flag_loss_town.png') }}" alt="Flag" id="image1" width="15px">
+            <img src="{{ asset('images/flag_loss_town.png') }}" alt="Flag" id="image2" width="15px">
+            <img src="{{ asset('images/flag_loss_town.png') }}" alt="Flag" id="image3" width="15px">
+            <img src="{{ asset('images/flag_loss_town.png') }}" alt="Flag" id="image4" width="15px">
+            <img src="{{ asset('images/flag_loss_town.png') }}" alt="Flag" id="image5" width="15px">
+            <img src="{{ asset('images/flag_loss_town.png') }}" alt="Flag" id="image6" width="15px">
+            <img src="{{ asset('images/flag_loss_town.png') }}" alt="Flag" id="image7" width="15px">
+            <img src="{{ asset('images/flag_loss_town.png') }}" alt="Flag" id="image8" width="15px">
+            <img src="{{ asset('images/flag_loss_town.png') }}" alt="Flag" id="image9" width="15px">
+            <img src="{{ asset('images/flag_loss_town.png') }}" alt="Flag" id="image10" width="15px">
+            <img src="{{ asset('images/flag_loss_town.png') }}" alt="Flag" id="image11" width="15px">
+            <img src="{{ asset('images/flag_loss_town.png') }}" alt="Flag" id="image12" width="15px">
+            <img src="{{ asset('images/flag_loss_town.png') }}" alt="Flag" id="image13" width="15px">
+            <img src="{{ asset('images/flag_loss_town.png') }}" alt="Flag" id="image14" width="15px">
+            <img src="{{ asset('images/flag_loss_town.png') }}" alt="Flag" id="image15" width="15px">
+            <img src="{{ asset('images/flag_loss_town.png') }}" alt="Flag" id="image16" width="15px">
+            <img src="{{ asset('images/flag_loss_town.png') }}" alt="Flag" id="image17" width="15px">
+            <img src="{{ asset('images/flag_loss_town.png') }}" alt="Flag" id="image18" width="15px">
+            <img src="{{ asset('images/flag_loss_town.png') }}" alt="Flag" id="image19" width="15px">
+            <img src="{{ asset('images/flag_loss_town.png') }}" alt="Flag" id="image20" width="15px">
+            <img src="{{ asset('images/flag_loss_town.png') }}" alt="Flag" id="image21" width="15px">
+            <img src="{{ asset('images/flag_loss_town.png') }}" alt="Flag" id="image22" width="15px">
+            <img src="{{ asset('images/flag_loss_town.png') }}" alt="Flag" id="image23" width="15px">
+            <img src="{{ asset('images/flag_loss_town.png') }}" alt="Flag" id="image24" width="15px">
 
         </div>
         <div class="col-3 offset-1">
@@ -207,7 +340,7 @@
                 {
                     gameOver(sessionStorage.getItem("minutes")+":"+sessionStorage.getItem("seconds"), sessionStorage.getItem("points"), sessionStorage.getItem("started_at"), 1);
                 }
-                moveAvatar(next_question);
+                moveAvatar(parseInt(sessionStorage.getItem("question_number")));
                 addEvent(parseInt(sessionStorage.getItem("question_number")));
 
                 
@@ -230,9 +363,9 @@
         });
     });
 
-    function moveAvatar(toQuestion)
+    function moveAvatar(imageNum)
     {
-        // To be done in future
+        $("#image"+(parseInt(imageNum)-1)).attr("src", "{{ asset('images/flag_win_town.png') }}");
     }
 
     function gameOver(time, points, started_at, status)

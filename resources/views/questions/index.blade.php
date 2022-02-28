@@ -8,7 +8,11 @@
                 <div class="card-header">{{ __('All questions') }}</div>
 
                 <div class="card-body">
-
+                    @if( Session::has('message') )
+                        <div class="alert alert-success">
+                            {{ Session::get('message') }}
+                        </div>
+                    @endif
                     <div class="row">
                             <div class="col-1 offset-6">
                                 <label for="search" class="form-control-label">Search:</label>

@@ -145,7 +145,7 @@ class QuestionsController extends Controller
     {
         Question::delete_question($question->id);
 
-        return redirect()->route("questions.index");
+        return redirect()->route("questions.index")->with(['message'=> 'The question was completely deleted!']);
     }
 
     /**
@@ -165,7 +165,7 @@ class QuestionsController extends Controller
 
         Question::update_question($id, $data);
 
-        return redirect()->back();
+        return redirect()->back()->with(['message'=> 'The question was completely removed from games!']);
     }
 
     /**
@@ -185,6 +185,6 @@ class QuestionsController extends Controller
 
         Question::update_question($id, $data);
 
-        return redirect()->back();
+        return redirect()->back()->with(['message'=> 'The question was completely returned in games!']);
     }
 }
