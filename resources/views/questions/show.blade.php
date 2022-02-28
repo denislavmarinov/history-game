@@ -43,19 +43,19 @@
                             <th>Added at</th>
                             <td>{{ $question->added_at }}</td>
                             <th>Added by</th>
-                            <td>{{ $question->added_by }}</td>
+                            <td>{{ auth()->user($question->added_by)->username }}</td>
                         </tr>
                         <tr>
                             <th>Updated at</th>
                             <td>{{ isset($question->updated_at) ? $question->updated_at : "-" }}</td>
                             <th>Updated by</th>
-                            <td>{{ isset($question->updated_by) ? $question->updated_by : "-" }}</td>
+                            <td>{{ isset($question->updated_by) ? auth()->user($question->updated_by)->username : "-" }}</td>
                         </tr>
                         <tr>
                             <th>Removed from games at</th>
                             <td>{{ isset($question->deleted_at) ? $question->deleted_at : "-" }}</td>
                             <th>Removed from games by</th>
-                            <td>{{ isset($question->deleted_by) ? $question->deleted_by : "-" }}</td>
+                            <td>{{ isset($question->deleted_by) ? auth()->user($question->deleted_by)->username : "-" }}</td>
                         </tr>
                         <tr>
                             <td>

@@ -44,8 +44,8 @@ class Question extends Model
                 ->delete();
     } 
 
-    public static function get_a_question_by_difficulty($difficulty) 
+    public static function get_a_question_by_difficulty($difficulty, $list = "(0)") 
     {
-        return DB::select(DB::raw("SELECT `id`,`question`, `answers`, `points` FROM `questions` WHERE `difficulty` = ".$difficulty." AND `deleted_at` IS NULL ORDER BY RAND() LIMIT 1"));
+        return DB::select(DB::raw("SELECT `id`,`question`, `answers`, `points` FROM `questions` WHERE `difficulty` = ".$difficulty." AND `deleted_at` IS NULL AND `id` NOT IN ".$list));
     }
 }

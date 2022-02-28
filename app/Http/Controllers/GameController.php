@@ -12,12 +12,30 @@ class GameController extends Controller
 {
     public function index()
     {
+        if (Session::has("Questions"))
+        {
+            Session::forget("questions");
+        }
+        Session::put("questions", []);
         return view("game.index");
     }
 
     public function get_a_question(Request $request)
     {
-        $question = Question::get_a_question_by_difficulty($request->difficulty)[0];
+        if(isset(Session::get("questions")[0]))
+        {
+            $list = Session::get("questions");
+            $list = implode(", ", $list);
+            $list = "(".$list.")";
+            $question = Question::get_a_question_by_difficulty($request->difficulty, $list);
+        }
+        else
+        {
+            $question = Question::get_a_question_by_difficulty($request->difficulty);
+        }
+        
+        shuffle($question);
+        $question = $question[0];
         
         $answers = json_decode($question->answers);
 
@@ -34,7 +52,9 @@ class GameController extends Controller
             }
             $num++;
         }
-
+        $session = Session::get("questions") == 1 ? [] : Session::get("questions");
+        array_push($session, $question->id);
+        Session::put("questions", $session);
         $result = [
             'id' => $question->id,
             'question' => $question->question,
@@ -54,6 +74,7 @@ class GameController extends Controller
     public function gameover()
     {
         $data = Session::get("data");
+        Session::forget("questions");
         return view("game.over", compact("data"));
     }
 
