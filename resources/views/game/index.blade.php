@@ -156,20 +156,20 @@
         <div class="col-3 offset-1">
             <div class="row">
                 <div class="col-4 offset-4">
-                    Time: <span id="time" class="font-weight-bold text-danger">00:00</span>
+                    Време: <span id="time" class="font-weight-bold text-danger">00:00</span>
                 </div>
             </div>
             <div class="row">
                 <div class="col-4">
-                    Points: <span id="points" class="font-weight-bold text-success">0</span>
+                    Точки: <span id="points" class="font-weight-bold text-success">0</span>
                 </div>
                 <div class="col-8">
-                    Remaining lives: <span id="lives" class="font-weight-bold text-success">3</span>
+                    Остващи животи: <span id="lives" class="font-weight-bold text-success">3</span>
                 </div>
             </div>
             
             <br>
-            <p class="text-center">Game log:</p>
+            <p class="text-center">Дневник на играта:</p>
             <hr>
             <div class="log"></div>
         </div>
@@ -331,7 +331,7 @@
             {
                 sessionStorage.setItem("points", parseInt(question.points) + parseInt(sessionStorage.getItem("points")));
                 $("#points").text(sessionStorage.getItem("points"));
-                $(".log").prepend("<p class='text-success'>Correct answer - Question № "+sessionStorage.getItem("question_number")+" <span style='color: #ccc;'>"+new Date().getHours()+":"+new Date().getMinutes()+"</span></p>");
+                $(".log").prepend("<p class='text-success'>Верен отговор - Въпрос № "+sessionStorage.getItem("question_number")+" <span style='color: #ccc;'>"+new Date().getHours()+":"+new Date().getMinutes()+"</span></p>");
 
                 sessionStorage.setItem("question_number", parseInt(sessionStorage.getItem("question_number")) + 1);
                 
@@ -348,7 +348,7 @@
             }
             else
             {
-                $(".log").prepend("<p class='text-danger'>Wrong answer - Question № "+sessionStorage.getItem("question_number")+" <span style='color: #ccc;'>"+new Date().getHours()+":"+new Date().getMinutes()+"</span></p>");
+                $(".log").prepend("<p class='text-danger'>Грешен отговор - Въпрос № "+sessionStorage.getItem("question_number")+" <span style='color: #ccc;'>"+new Date().getHours()+":"+new Date().getMinutes()+"</span></p>");
                 $("#lives").text(parseInt($("#lives").text())-1);
                 if ($("#lives").text() == "0")
                 {

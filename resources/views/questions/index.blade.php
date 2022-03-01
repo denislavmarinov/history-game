@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('All questions') }}</div>
+                <div class="card-header">Всички въпроси</div>
 
                 <div class="card-body">
                     @if( Session::has('message') )
@@ -15,7 +15,7 @@
                     @endif
                     <div class="row">
                             <div class="col-1 offset-6">
-                                <label for="search" class="form-control-label">Search:</label>
+                                <label for="search" class="form-control-label">Търси:</label>
                             </div>
                             <div class="col-5">
                                 <form method="post">
@@ -28,12 +28,12 @@
                     <table class="table">
                         <tr id="head">
                             <th>#</th>
-                            <th>Question</th>
-                            <th>Points</th>
-                            <th>Difficulty</th>
-                            <th>Edit</th>
-                            <th>Remove from games</th>
-                            <th>Delete</th>
+                            <th>Въпрос</th>
+                            <th>Точки</th>
+                            <th>Трудност</th>
+                            <th>Редактирай</th>
+                            <th>Премахни от игра</th>
+                            <th>Изтрий</th>
                         </tr>
                         @php $num = 1; @endphp
                         @foreach($questions as $question)
@@ -47,7 +47,7 @@
                                 <td>{{ $question->points }}</td>
                                 <td>{{ $question->difficulty }}</td>
                                 <td>
-                                    <a href="{{ route('questions.edit', $question->id) }}" class="btn btn-warning">Edit</a>
+                                    <a href="{{ route('questions.edit', $question->id) }}" class="btn btn-warning">Редактирай</a>
                                 </td>
                                 <td>
                                     @if (!isset($question->deleted_at))
@@ -55,19 +55,19 @@
                                         @csrf
                                         @method("PUT")
 
-                                        <input type="submit" class="btn btn-outline-danger" value="Remove from games">
+                                        <input type="submit" class="btn btn-outline-danger" value="Премахни от игра">
                                     </form>
                                     @else
                                     <form action="{{ route('questions.return_in_game', $question->id) }}" method="post">
                                         @csrf
                                         @method("PUT")
 
-                                        <input type="submit" class="btn btn-outline-success" value="Return in games">
+                                        <input type="submit" class="btn btn-outline-success" value="Върни в игра">
                                     </form>
                                     @endif
                                 </td>
                                 <td>
-                                    <button class="btn btn-danger delete-btns" data-id="question_{{$question->id}}">Delete</button>
+                                    <button class="btn btn-danger delete-btns" data-id="question_{{$question->id}}">Изтрий</button>
                                     <form action="{{ route('questions.destroy', $question->id) }}" method="post" id="question_{{$question->id}}">
                                         @csrf
                                         @method("DELETE")
@@ -86,7 +86,7 @@
         e.preventDefault;
         $(this).on("click", function(e){
             e.preventDefault;
-            let answer = prompt("Do you really want to delete this question? (Yes/No)");
+            let answer = prompt("Наистина ли искате да изтриете този въпрос? (Yes/No)");
             
             if (answer == "Yes" || answer == "yes" || answer == "YES")
             {

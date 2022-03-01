@@ -5,29 +5,29 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Game over') }}</div>
+                <div class="card-header">{{ __('Играта свърши') }}</div>
 
                 <div class="card-body">
-                    <h3 class="text-center">Game stats</h3>
+                    <h3 class="text-center">Данни за игра</h3>
                     <table class="table">
                         <tr>
-                            <th>Points</th>
+                            <th>Точки</th>
                             <td>{{ $data['points'] }}</td>
                         </tr>
                         <tr>
-                            <th>Status</th>
-                            <td class="text-{{ $data['status'] ? 'success' : 'danger'}}">{{ $data['status'] ? "Win" : "Loss"}}</td>
+                            <th>Статус</th>
+                            <td class="text-{{ $data['status'] ? 'success' : 'danger'}}">{{ $data['status'] ? "Победа" : "Загуба"}}</td>
                         </tr>
                         <tr>
-                            <th>Time for completion</th>
+                            <th>Време за завършване</th>
                             <td>{{ $data['game_completion_time'] }}</td>
                         </tr>
                         <tr>
-                            <th>Started at</th>
+                            <th>Начало</th>
                             <td>{{ date_format(date_create($data['started_at']), "d.m.Y H:i:s") }}</td>
                         </tr>
                         <tr>
-                            <th>Finished at</th>
+                            <th>Край</th>
                             <td>{{ date_format(date_create($data['finished_at']), "d.m.Y H:i:s") }}</td>
                         </tr>
                     </table>

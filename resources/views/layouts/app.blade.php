@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>History game</title>
+    <title>Историческа игра</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -29,11 +29,11 @@
             <div class="container">
                 @guest
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        History game
+                        Историческа игра
                     </a>
                 @else
                     <a class="navbar-brand" href="{{ route('home') }}">
-                        History game
+                        Историческа игра
                     </a>
                 @endguest
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -46,14 +46,14 @@
                         @guest
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('game.index') }}">Play game</a>
+                                <a class="nav-link" href="{{ route('game.index') }}">Играй</a>
                             </li>
                             @if(auth()->user()->role)
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Questions</a>
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Въпроси</a>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="{{ route('questions.index') }}">All questions</a>
-                                        <a class="dropdown-item" href="{{ route('questions.create') }}">Add new question</a>
+                                        <a class="dropdown-item" href="{{ route('questions.index') }}">Всички въпроси</a>
+                                        <a class="dropdown-item" href="{{ route('questions.create') }}">Добавяне на въпрос</a>
                                     </div>
                                 </li>
                             @endif
@@ -65,11 +65,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">Вход</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">Регистрация</a>
                                 </li>
                             @endif
                         @else
@@ -82,7 +82,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        Изход
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

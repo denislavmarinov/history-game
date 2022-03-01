@@ -62,7 +62,7 @@ class QuestionsController extends Controller
 
         Question::insert_question($data);
 
-        return redirect()->route("questions.index")->with(['message'=> 'The new question is completely saved!']);
+        return redirect()->route("questions.index")->with(['message'=> 'Въпроса беше успешно създаден!']);
     }
 
     /**
@@ -132,7 +132,7 @@ class QuestionsController extends Controller
 
         Question::update_question($question->id, $data);
 
-        return redirect()->route("questions.show", $question->id)->with(['message'=> 'The question was completely updated!']);
+        return redirect()->route("questions.show", $question->id)->with(['message'=> 'Въпросът беше успешно редактиран!']);
     }
 
     /**
@@ -145,7 +145,7 @@ class QuestionsController extends Controller
     {
         Question::delete_question($question->id);
 
-        return redirect()->route("questions.index")->with(['message'=> 'The question was completely deleted!']);
+        return redirect()->route("questions.index")->with(['message'=> 'Въпросът беше успешно изтрит!']);
     }
 
     /**
@@ -165,7 +165,7 @@ class QuestionsController extends Controller
 
         Question::update_question($id, $data);
 
-        return redirect()->back()->with(['message'=> 'The question was completely removed from games!']);
+        return redirect()->back()->with(['message'=> 'Въпросът успешно беше премахнат от игри!']);
     }
 
     /**
@@ -185,6 +185,6 @@ class QuestionsController extends Controller
 
         Question::update_question($id, $data);
 
-        return redirect()->back()->with(['message'=> 'The question was completely returned in games!']);
+        return redirect()->back()->with(['message'=> 'Въпросът беше успешно добавен в игри!']);
     }
 }

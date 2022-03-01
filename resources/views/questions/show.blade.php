@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Question') }}</div>
+                <div class="card-header">{{ __('Въпрос') }}</div>
 
                 <div class="card-body">
                     @if( Session::has('message') )
@@ -15,16 +15,16 @@
                     @endif
                     <table class="table">
                         <tr>
-                            <th>Question:</th>
+                            <th>Въпрос:</th>
                             <td colspan="2">{{ $question->question }}</td>
                         </tr>
                         <tr>
-                            <th>Answers:</th>
+                            <th>Отговори:</th>
                             <td colspan="2">
                                 <table width="100%">
                                     @foreach(json_decode($question->answers) as $answer)
                                         <tr>
-                                            <td><b>{{ $answer->answer_type == "c" ? "Correct" : "Wrong" }}</b>:</td>
+                                            <td><b>{{ $answer->answer_type == "c" ? "Верен" : "Грешен" }}</b>:</td>
                                             <td>{{ $answer->answer }}</td>
                                         </tr>
                                     @endforeach
@@ -32,34 +32,34 @@
                             </td>
                         </tr>
                         <tr>
-                            <th>Points:</th>
+                            <th>Точки:</th>
                             <td colspan="2">{{ $question->points }}</td>
                         </tr>
                         <tr>
-                            <th>Difficulty:</th>
+                            <th>Трудност:</th>
                             <td colspan="2">{{ $question->difficulty }}</td>
                         </tr>
                         <tr>
-                            <th>Added at</th>
+                            <th>Добавен на </th>
                             <td>{{ $question->added_at }}</td>
-                            <th>Added by</th>
+                            <th>Добавен от</th>
                             <td>{{ auth()->user($question->added_by)->username }}</td>
                         </tr>
                         <tr>
-                            <th>Updated at</th>
+                            <th>Редактиран на</th>
                             <td>{{ isset($question->updated_at) ? $question->updated_at : "-" }}</td>
-                            <th>Updated by</th>
+                            <th>Редактиран от</th>
                             <td>{{ isset($question->updated_by) ? auth()->user($question->updated_by)->username : "-" }}</td>
                         </tr>
                         <tr>
-                            <th>Removed from games at</th>
+                            <th>Изтрит на</th>
                             <td>{{ isset($question->deleted_at) ? $question->deleted_at : "-" }}</td>
-                            <th>Removed from games by</th>
+                            <th>Изтрит от</th>
                             <td>{{ isset($question->deleted_by) ? auth()->user($question->deleted_by)->username : "-" }}</td>
                         </tr>
                         <tr>
                             <td>
-                                <a href="{{ route('questions.edit', $question->id) }}" class="btn btn-warning">Edit</a>
+                                <a href="{{ route('questions.edit', $question->id) }}" class="btn btn-warning">Редактирай</a>
                             </td>
                             <td> 
                                 @if (!isset($question->deleted_at))
@@ -67,19 +67,19 @@
                                     @csrf
                                     @method("PUT")
 
-                                    <input type="submit" class="btn btn-outline-danger" value="Remove from games">
+                                    <input type="submit" class="btn btn-outline-danger" value="Премахни от игра">
                                 </form>
                                 @else
                                 <form action="{{ route('questions.return_in_game', $question->id) }}" method="post">
                                     @csrf
                                     @method("PUT")
 
-                                    <input type="submit" class="btn btn-outline-success" value="Return in games">
+                                    <input type="submit" class="btn btn-outline-success" value="Върни в игра">
                                 </form>
                                 @endif
                             </td>
                             <td>
-                                <button class="btn btn-danger delete-btns" data-id="question_{{$question->id}}">Delete</button>
+                                <button class="btn btn-danger delete-btns" data-id="question_{{$question->id}}">Изтрий</button>
                                 <form action="{{ route('questions.destroy', $question->id) }}" method="post" id="question_{{$question->id}}">
                                     @csrf
                                     @method("DELETE")
@@ -97,7 +97,7 @@
         e.preventDefault;
         $(this).on("click", function(e){
             e.preventDefault;
-            let answer = prompt("Do you really want to delete this question? (Yes/No)");
+            let answer = prompt("Наистина ли искате да изтриете този въпрос? (Yes/No)");
             
             if (answer == "Yes" || answer == "yes" || answer == "YES")
             {
