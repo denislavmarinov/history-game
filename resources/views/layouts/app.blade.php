@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Историческа игра</title>
+    <title>Из дебрите на българската история</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -29,11 +29,11 @@
             <div class="container">
                 @guest
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        Историческа игра
+                    Из дебрите на българската история
                     </a>
                 @else
                     <a class="navbar-brand" href="{{ route('home') }}">
-                        Историческа игра
+                    Из дебрите на българската история
                     </a>
                 @endguest
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

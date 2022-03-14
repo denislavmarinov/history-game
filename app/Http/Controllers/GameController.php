@@ -12,12 +12,17 @@ class GameController extends Controller
 {
     public function index()
     {
-        if (Session::has("Questions"))
+        return view("game.index");
+    }
+
+    public function start_game()
+    {
+        if (Session::has("questions"))
         {
             Session::forget("questions");
         }
         Session::put("questions", []);
-        return view("game.index");
+        return view("game.start_game");
     }
 
     public function get_a_question(Request $request)
