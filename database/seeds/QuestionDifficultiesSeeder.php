@@ -14,19 +14,19 @@ class QuestionDifficultiesSeeder extends Seeder
     {
         $difficulties = [
             [
-                'difficulty' => "easy"
+                'difficulty' => "лесно"
             ],
             [
-                'difficulty' => "medium"
+                'difficulty' => "средно"
             ],
             [
-                'difficulty' => "hard"
+                'difficulty' => "трудно"
             ],
             [
-                'difficulty' => "expert"
+                'difficulty' => "за експерти"
             ],
             [
-                'difficulty' => "insane"
+                'difficulty' => "за историци"
             ],
         ];
 
